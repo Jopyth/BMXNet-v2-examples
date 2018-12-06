@@ -26,7 +26,6 @@ import numpy as np
 import mxnet as mx
 from mxnet import gluon, autograd
 from mxnet.gluon import nn
-from binary import BDense
 
 # Parse CLI arguments
 
@@ -52,16 +51,16 @@ opt = parser.parse_args()
 net = nn.HybridSequential()
 with net.name_scope():
     if opt.bits == 1:
-        net.add(BDense(128))
-        net.add(BDense(64))
-        net.add(BDense(10))
+        net.add(nn.QDense(128, bits=opt.bits))
+        net.add(nn.QDense(64, bits=opt.bits))
+        net.add(nn.QDense(10, bits=opt.bits))
     elif opt.bits < 32:
         raise RuntimeError("Quantization not yet supported")
     else:
         net.add(nn.Dense(128, activation='relu'))
         net.add(nn.Dense(64, activation='relu'))
         net.add(nn.Dense(10))
-# net.hybridize()
+net.hybridize()
 
 # data
 

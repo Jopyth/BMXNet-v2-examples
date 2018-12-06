@@ -3,7 +3,7 @@
 This repository contains binary models, based on original mxnet architectures and others.
 Note, that not all models and changes are documented completely.
 
-Examples for hyperparameters are documented in the [Wiki](https://github.com/hpi-xnor/BMXNet-v2-wiki/blob/master/hyperparameters.md).
+Examples for hyperparameters are documented in the [Wiki](https://github.com/hpi-xnor/BMXNet-v2-wiki).
 
 ## Datasets
 
